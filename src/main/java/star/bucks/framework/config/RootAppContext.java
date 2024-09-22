@@ -48,7 +48,7 @@ public class RootAppContext {
 
     @Bean
     public DataSourceTransactionManager transactionManager(DataSource source){
-        return new DataSourceTransactionManager(dataSource());
+        return new DataSourceTransactionManager(source);
 
     }
 
