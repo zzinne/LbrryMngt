@@ -1,13 +1,12 @@
 package star.bucks.framework;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 import star.bucks.framework.config.RootAppContext;
 import star.bucks.framework.config.ServletAppContext;
-import star.bucks.framework.security.SecurityConfig;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -27,7 +26,7 @@ public class MyWebApplicationInitializer implements WebApplicationInitializer {
 
         AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
 
-        rootContext.register(RootAppContext.class, SecurityConfig.class);
+        rootContext.register(RootAppContext.class);
         ContextLoaderListener contextLoaderListener = new ContextLoaderListener(rootContext);
 
         servletContext.addListener(contextLoaderListener);
