@@ -26,6 +26,7 @@ public class RootAppContext {
     @Bean
     public DataSource dataSource(){
         HikariConfig config = new HikariConfig();
+        config.setDriverClassName("com.mysql.jdbc.Driver");
         config.setJdbcUrl(env.getProperty("datasource.url"));
         config.setUsername(env.getProperty("datasource.user"));
         config.setPassword(env.getProperty("datasource.password"));
@@ -42,7 +43,7 @@ public class RootAppContext {
         SqlSessionFactoryBean session = new SqlSessionFactoryBean();
 
         session.setDataSource(source);
-        session.setMapperLocations(new PathMatchingResourcePatternResolver().getResource("classpath:mapper/*.xml"));
+        session.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:/mapper/*.xml"));
         return session.getObject();
     }
 
